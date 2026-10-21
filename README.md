@@ -1,22 +1,25 @@
-# Mis 3 valores esenciales · SSK002
+# Dinámica de valores · SSK002 — versión sin interpretación
 
-Web estática para GitHub Pages con conexión a Google Sheets y correo automático mediante Apps Script.
+## Qué cambia
+- En la pantalla final solo aparecen **los tres valores y sus definiciones**.
+- El correo reproduce esos mismos valores y definiciones, sin perfil ni juicios.
+- Cada una de las tres columnas tiene un título visual en la primera ronda, y en la segunda se muestra «Elige 1 de 5».
+- Se conservan **15 valores iniciales**, tres finales, nombre, matrícula, correo y estado del envío.
+- Se conservan las 16 columnas técnicas del Google Sheet existente para evitar desplazar información histórica. Las cuatro columnas anteriores de interpretación quedan vacías para nuevas respuestas.
 
-## Configuración (una sola vez)
+## Actualizar GitHub
+1. Sustituye `index.html` en el repositorio (mantén la URL real de Apps Script en `SCRIPT_URL` — la plantilla descargada trae un marcador).
+2. Confirma los cambios en `main` y verifica la página de GitHub Pages.
 
-1. Abre la hoja nueva: https://docs.google.com/spreadsheets/d/1RjPpefWlu5Yu9GB-kKFlqEhxOdi1Z2sc8OE8QlxHzlw/edit?usp=drivesdk
-2. En esa hoja, abre **Extensiones → Apps Script**. Sustituye el contenido de `Code.gs` por el archivo `Code.gs` de este paquete y guarda.
-3. En **Implementar → Nueva implementación → Tipo: Aplicación web**, selecciona **Ejecutar como: Yo** y **Acceso: Cualquier usuario**. Concede a Apps Script los permisos para editar Sheets y enviar correo. Copia el URL que termina en `/exec`. Si tu organización impide acceso público, pide autorización institucional o usa una implementación con acceso restringido.
-4. Abre `index.html` y reemplaza `PEGA_AQUI_LA_URL_DE_APPS_SCRIPT` por ese URL `/exec` (entre las comillas existentes).
-5. En GitHub crea un repositorio (por ejemplo `ssk002-valores`). Sube `index.html` y `README.md` a la raíz. `Code.gs` se puede mantener **fuera del repositorio público**; no contiene credenciales, pero publicar el script no es necesario.
-6. En GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root) → Save**.
-7. Abre la URL de GitHub Pages y completa una prueba con tu propio correo y una matrícula de prueba. Comprueba: nueva fila en pestaña `Resultados`, columna `Estado del correo` igual a `ENVIADO`, mensaje de éxito en la web y correo recibido.
+## Actualizar Google Apps Script
+1. En la hoja de resultados, Extensiones > Apps Script, sustituye el contenido de `Code.gs` por este archivo.
+2. Implementar > Administrar implementaciones > lápiz (editar) > Versión: Nueva versión > Implementar.
+3. Prueba con un correo y una matrícula que no se hayan utilizado en pruebas anteriores.
 
-## Notas importantes
+**Importante:** actualizar únicamente GitHub no cambia el correo: hay que actualizar también Google Apps Script y crear una nueva versión de implementación.
 
-- El enlace de Apps Script estará visible en el código público; **no es un secreto**. Puede recibir peticiones externas. Para uso en grupo cerrado, considera acceso restringido, políticas institucionales y monitoreo de cuotas de MailApp.
-- La matrícula se utiliza para bloquear un segundo envío; si necesitan corregir uno, el profesor puede borrar o modificar el registro manualmente.
-- Las descripciones del perfil son **orientativas, no diagnósticas**; las reglas de interpretación están en el navegador y se envían a la hoja. Si buscas integridad reforzada, traslada la construcción del perfil al script del servidor.
-- Los datos de identificación y valores se guardan en la cuenta propietaria del Google Sheets y se envían por correo a los participantes. Configura los permisos de la hoja para que solo el profesor tenga acceso. No incluyas matrículas ni correos en la web pública.
-- La entrega se basa en la matriz de 15 cuadros del archivo `Valores.pdf`, preservando su orden por filas y columnas.
-- Apps Script tiene cuotas de envío de correo. Antes de aplicar a todo el grupo comprueba que queden suficientes envíos diarios.
+## Actualización: sentido práctico de los valores
+
+El resultado en pantalla y el correo incluyen siete aplicaciones pedagógicas comunes a todos los alumnos y una pregunta de reflexión. No se infieren rasgos, fortalezas, retos ni perfiles individuales.
+
+Para actualizar: reemplaza `index.html` en GitHub y conserva tu URL `/exec` real en `SCRIPT_URL`. Sustituye `Code.gs` en el Apps Script vinculado al Sheet, guarda y ve a **Implementar > Administrar implementaciones > Editar > Nueva versión > Implementar**. Los encabezados existentes de Google Sheets no cambian.
